@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+
+{% block body %}
+    <div class="container">
+    <div class="list-group">
+            <button type="button" class="list-group-item list-group-item-action" href="/">Sudoku Solver</button>
+            <button type="button" class="list-group-item list-group-item-action">Sudoku Game</button>
+            <button type="button" class="list-group-item list-group-item-action">Download Solution</button>
+    </div>
+    <form action="/solution" class="form" method="post">
+        <div class="sudoku_table">
+            {% for row in range(1, 10) %}
+            <div class="small" id="{{ row }}">
+                {% for col in range(1, 10) %}
+                <input autocomplete="off" type="number" maxlength="1" name="{{ row }}{{ col }}">
+                {% endfor %}
+            </div>
+            {% endfor %}
+        </div>
+        <div class="button_group">
+            <input class="btn btn-primary" type="button" value="Input">
+            <button class="btn btn-primary" type="submit">Submit</button>
+            <input class="btn btn-primary" type="reset" onclick="window.location.reload()" value="Reset">
+        </div>
+        </form>
+    </div>
+   
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+{% endblock body %}
+  </body>
+  
